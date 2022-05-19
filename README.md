@@ -4,6 +4,8 @@
 
 ```javascript
 git status   > te retorna um resumo de como o Git está vendo seu código atualmente e como ele está tratando-o
+
+git log      > mostra o histórico de alterações dos arquivos [ aperte Q pra sair ]
 ```
 
 ----
@@ -71,13 +73,18 @@ Certo, mas **como o git guarda esse arquivos? Eles são duplicados?** Vamos prim
      └─── tags
 ```
 
-Quando adicionamos um arquivo com o `git add .`, nós temos esta alteração quando rodamos o comando `tree .git` (que mostra o exato arquivo descrito acima)
+Quando adicionamos um arquivo com **apenas uma linha** com o `git add .`, nós temos esta alteração quando rodamos o comando `tree .git` (que mostra o exato arquivo descrito acima).
+Nós podemos um objct novo, ou como as pessoas costumam chamar, um **blob** (binary large object) que referencia exatamente a única linha presente no nosso arquivo que acabamos de guardar.
+
+o Blob é referenciado assim:
+> - **blob `b7` `jk0`**
+> -     título + 3 primeiros char 
 ```
 .git
 
 [ ... ]
 ├─── objects
-│    ├─── b7  > olha o nosso arquivo aqui
+│    ├─── b7  > olha a nossa linha aqui
 │    │    └─── jk09ferwjkr430k9wfeds90ikds9043
 │    ├─── info
 │    └─── pack
@@ -85,3 +92,4 @@ Quando adicionamos um arquivo com o `git add .`, nós temos esta alteração qua
      ├─── heads
      └─── tags
 ```
+Quando nós rodarmos `git commit -m "Add arquivo"`, será gerado um # para o nosso commit e ele será salvo na Tree (sendo uma espécie de **Snapshot**). Então quando nós rodarmos um novo `git add` e um `git commit`, ele irá comparar linha por linha (ou seja, blob por blob), e alterar somente o que tiver sido alterado realmente.
