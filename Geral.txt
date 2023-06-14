@@ -1,0 +1,72 @@
+[ TODO DIA ]
+
+> git fetch
+> git status
+> git pull
+
+-----------------
+[ MUDAR DE BRANCH ]
+
+> git checkout nome_branch
+  > faz o git commit normal
+
+-----------------
+[ FEATURE ]
+
+> git flow feature start nome_feature
+
+> git add .
+  > git commit -m "nome commit"
+  > git flow feature finish
+  > git push origin develop/master
+
+-----------------
+[ HOTFIX ]
+
+> git flow hotfix start nome_hotfix
+
+> git flow hotfix finish
+  > vai aparecer algumas telas, só tira o # da onde tiver uma tag escrita v. (normalmente no segundo arquivo q ele abrir)
+> git push origin develop (e depois na master)
+
+-----------------
+[ RELEASE ]
+
+> git fetch
+  > git status
+  > git checkout master
+    > git fetch
+    > git status
+    > git checkout develop
+
+> git flow release start 08012022 --data atual
+  > git flow release finish
+  > vai aparecer umas telas, só tira o # onde tiver uma tag v. (normalmente no segundo arquivo q ele abrir)
+
+> git checkout master
+  > git push
+
+-----------------
+[ LIMPAR MUDANÇAS ]
+> git stash
+
+
+> git stash pop  ->>  traz elas de volta
+
+-----------------
+[ CLONA NO GIT ] 
+ > clica em "CLONE"
+   > clone com https e ctrl + C
+
+ > CLica na Pasta Projeto (Botão Direito)
+   > GIT Bash here
+     > git clone *paste do mouse
+
+-----------------
+[ CONFIG DO VS CODE ]
+
+> git config --global core.editor 'code --wait'
+-----------------------------------------------------------------
+
+-- Realizar os merges 
+//git mergetool
